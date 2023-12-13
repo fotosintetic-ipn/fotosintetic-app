@@ -43,7 +43,7 @@ func _ready():
 	
 	heartrate = Function.new(time, heartrate_value, "Heartrate",
 		{ 
-			color = Color("#36a2eb"), 		# The color associated to this function
+			color = Color(0, 0, 1), 		# The color associated to this function
 			marker = Function.Marker.CIRCLE, 	# The marker that will be displayed for each drawn point (x,y)
 											# since it is `NONE`, no marker will be shown.
 			type = Function.Type.LINE, 		# This defines what kind of plotting will be used, 
@@ -73,7 +73,6 @@ func _process(delta):
 	
 	heartrate_value = []
 	spo2_value = []
-	var idx = 0
 	
 	for i in range(0, response["data"].size(), 1):
 		for ii in range(0, response["data"][i]["heartrate"].size(), 1):
@@ -98,8 +97,7 @@ func _process(delta):
 
 func get_records(after: int = -1, before: int = -1, limit: int = -1):
 	if((after == -1 && before == -1) || (after != -1 && before != -1)):
-		var ret: Dictionary
-		return ret
+		return
 	
 	var parameters = "?"
 	if(after != -1):
@@ -115,6 +113,7 @@ func get_records(after: int = -1, before: int = -1, limit: int = -1):
 	
 	$request.request(server_url + "/get_records" + parameters, [auth])
 	
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, _response_code, _headers, body):
+	print(body.get_string_from_utf8())
 	response = JSON.parse_string(body.get_string_from_utf8())
 	data_available = true

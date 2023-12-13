@@ -3,63 +3,89 @@
 [ext_resource type="Script" path="res://scripts/create_account/create_account.gd" id="1_h6kov"]
 
 [node name="root" type="Node2D"]
+position = Vector2(360, 540)
 script = ExtResource("1_h6kov")
+metadata/_edit_horizontal_guides_ = [-48.0]
+metadata/_edit_vertical_guides_ = [360.0, 527.0]
 
 [node name="device_connection" type="Node2D" parent="."]
+position = Vector2(-360, -540)
 
 [node name="form" type="Node2D" parent="device_connection"]
 
 [node name="ssid" type="LineEdit" parent="device_connection/form"]
-offset_left = 224.0
-offset_top = 37.0
-offset_right = 455.0
-offset_bottom = 79.0
+offset_left = 245.0
+offset_top = 137.0
+offset_right = 477.0
+offset_bottom = 179.0
+pivot_offset = Vector2(115, 685)
 placeholder_text = "wifi ssid"
+metadata/_edit_use_anchors_ = true
 
 [node name="password" type="LineEdit" parent="device_connection/form"]
-offset_left = 225.0
-offset_top = 98.0
-offset_right = 452.0
-offset_bottom = 139.0
+offset_left = 245.0
+offset_top = 204.0
+offset_right = 477.0
+offset_bottom = 245.0
+pivot_offset = Vector2(115, 618)
 placeholder_text = "password"
+metadata/_edit_use_anchors_ = true
 
 [node name="send" type="Button" parent="device_connection"]
-offset_left = 278.0
-offset_top = 160.0
-offset_right = 397.0
-offset_bottom = 238.0
+offset_left = 194.0
+offset_top = 274.0
+offset_right = 331.0
+offset_bottom = 352.0
+pivot_offset = Vector2(166, 548)
 text = "Connect oxim
 device to
 internet"
+metadata/_edit_use_anchors_ = true
+
+[node name="already_connected" type="Button" parent="device_connection"]
+offset_left = 389.0
+offset_top = 274.0
+offset_right = 524.0
+offset_bottom = 351.0
+pivot_offset = Vector2(-29, 548)
+text = "Oxim device
+already
+connected?"
+metadata/_edit_use_anchors_ = true
 
 [node name="label" type="LineEdit" parent="device_connection"]
-offset_left = 171.0
-offset_top = 257.0
-offset_right = 504.0
-offset_bottom = 288.0
+offset_left = 193.0
+offset_top = 379.0
+offset_right = 526.0
+offset_bottom = 410.0
+pivot_offset = Vector2(167, 443)
 text = "device status"
 alignment = 1
 editable = false
+metadata/_edit_use_anchors_ = true
 
 [node name="status" type="TextEdit" parent="device_connection"]
-offset_left = 126.0
-offset_top = 306.0
-offset_right = 545.0
-offset_bottom = 402.0
+offset_left = 151.0
+offset_top = 425.0
+offset_right = 570.0
+offset_bottom = 521.0
+pivot_offset = Vector2(209, 397)
 editable = false
+metadata/_edit_use_anchors_ = true
 
 [node name="request" type="HTTPRequest" parent="device_connection"]
 
 [node name="server" type="Node2D" parent="."]
+position = Vector2(-360, -540)
 
 [node name="form" type="Node2D" parent="server"]
 
 [node name="username" type="LineEdit" parent="server/form"]
-offset_left = 225.0
-offset_top = 436.0
-offset_right = 456.0
-offset_bottom = 477.0
-pivot_offset = Vector2(-235, -197)
+offset_left = 245.0
+offset_top = 575.0
+offset_right = 476.0
+offset_bottom = 616.0
+pivot_offset = Vector2(115, 247)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 placeholder_text = "username"
@@ -67,11 +93,11 @@ editable = false
 metadata/_edit_use_anchors_ = true
 
 [node name="password" type="LineEdit" parent="server/form"]
-offset_left = 226.0
-offset_top = 494.0
-offset_right = 453.0
-offset_bottom = 539.0
-pivot_offset = Vector2(-238, -264)
+offset_left = 245.0
+offset_top = 642.0
+offset_right = 472.0
+offset_bottom = 687.0
+pivot_offset = Vector2(115, 180)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 placeholder_text = "password"
@@ -79,11 +105,11 @@ editable = false
 metadata/_edit_use_anchors_ = true
 
 [node name="create_account" type="Button" parent="server"]
-offset_left = 186.0
-offset_top = 555.0
-offset_right = 311.0
-offset_bottom = 636.0
-pivot_offset = Vector2(-284, -345)
+offset_left = 194.0
+offset_top = 716.0
+offset_right = 330.0
+offset_bottom = 793.0
+pivot_offset = Vector2(166, 106)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 disabled = true
@@ -92,19 +118,21 @@ account"
 metadata/_edit_use_anchors_ = true
 
 [node name="log_in" type="Button" parent="server"]
-offset_left = 351.0
-offset_top = 557.0
-offset_right = 467.0
-offset_bottom = 636.0
+offset_left = 389.0
+offset_top = 716.0
+offset_right = 524.0
+offset_bottom = 793.0
+pivot_offset = Vector2(-29, 106)
 disabled = true
 text = "Log In"
+metadata/_edit_use_anchors_ = true
 
 [node name="label" type="LineEdit" parent="server"]
-offset_left = 165.0
-offset_top = 651.0
-offset_right = 499.0
-offset_bottom = 682.0
-pivot_offset = Vector2(-181, -476)
+offset_left = 194.0
+offset_top = 825.0
+offset_right = 528.0
+offset_bottom = 856.0
+pivot_offset = Vector2(166, -3)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 text = "server status"
@@ -113,11 +141,11 @@ editable = false
 metadata/_edit_use_anchors_ = true
 
 [node name="status" type="TextEdit" parent="server"]
-offset_left = 124.0
-offset_top = 698.0
-offset_right = 545.0
-offset_bottom = 798.0
-pivot_offset = Vector2(-141, -523)
+offset_left = 149.0
+offset_top = 882.0
+offset_right = 570.0
+offset_bottom = 982.0
+pivot_offset = Vector2(211, -60)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 editable = false
@@ -126,24 +154,38 @@ metadata/_edit_use_anchors_ = true
 [node name="request" type="HTTPRequest" parent="server"]
 
 [node name="device_credentials" type="Node2D" parent="."]
+position = Vector2(-360, -540)
 
 [node name="send" type="Button" parent="device_credentials"]
-offset_left = 275.0
-offset_top = 818.0
-offset_right = 400.0
-offset_bottom = 895.0
+offset_left = 194.0
+offset_top = 1079.0
+offset_right = 331.0
+offset_bottom = 1156.0
+pivot_offset = Vector2(166, -257)
 disabled = true
 text = "Send username
 and password to
 oxim device"
 metadata/_edit_use_anchors_ = true
 
+[node name="already_logged_in" type="Button" parent="device_credentials"]
+offset_left = 389.0
+offset_top = 1079.0
+offset_right = 523.0
+offset_bottom = 1156.0
+pivot_offset = Vector2(-29, -257)
+disabled = true
+text = "Oxim device
+already logged
+in?"
+metadata/_edit_use_anchors_ = true
+
 [node name="label" type="LineEdit" parent="device_credentials"]
-offset_left = 170.0
-offset_top = 912.0
-offset_right = 504.0
-offset_bottom = 943.0
-pivot_offset = Vector2(-181, -476)
+offset_left = 193.0
+offset_top = 1242.0
+offset_right = 527.0
+offset_bottom = 1273.0
+pivot_offset = Vector2(167, -420)
 size_flags_horizontal = 3
 text = "device status"
 alignment = 1
@@ -151,11 +193,11 @@ editable = false
 metadata/_edit_use_anchors_ = true
 
 [node name="status" type="TextEdit" parent="device_credentials"]
-offset_left = 127.0
-offset_top = 961.0
-offset_right = 548.0
-offset_bottom = 1061.0
-pivot_offset = Vector2(-141, -523)
+offset_left = 149.0
+offset_top = 1318.0
+offset_right = 570.0
+offset_bottom = 1418.0
+pivot_offset = Vector2(211, -496)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 editable = false
@@ -164,18 +206,21 @@ metadata/_edit_use_anchors_ = true
 [node name="request" type="HTTPRequest" parent="device_credentials"]
 
 [node name="next" type="Button" parent="."]
-offset_left = 583.0
-offset_top = 962.0
-offset_right = 685.0
-offset_bottom = 1060.0
+offset_left = -51.0
+offset_top = 923.0
+offset_right = 51.0
+offset_bottom = 1021.0
 disabled = true
 text = "Next"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="device_connection/send" to="." method="_on_device_connection_send_pressed"]
+[connection signal="pressed" from="device_connection/already_connected" to="." method="_on_device_connection_already_connected_pressed"]
 [connection signal="request_completed" from="device_connection/request" to="." method="_on_device_connection_request_completed"]
 [connection signal="pressed" from="server/create_account" to="." method="_on_server_create_account_pressed"]
 [connection signal="pressed" from="server/log_in" to="." method="_on_server_log_in_pressed"]
 [connection signal="request_completed" from="server/request" to="." method="_on_server_request_completed"]
 [connection signal="pressed" from="device_credentials/send" to="." method="_on_send_credentials_pressed"]
+[connection signal="pressed" from="device_credentials/already_logged_in" to="." method="_on_device_credentials_already_logged_in_pressed"]
 [connection signal="request_completed" from="device_credentials/request" to="." method="_on_device_credentials_request_completed"]
 [connection signal="pressed" from="next" to="." method="_on_next_pressed"]
