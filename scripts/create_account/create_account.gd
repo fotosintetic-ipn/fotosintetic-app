@@ -64,6 +64,7 @@ func _on_server_request_completed(_result, response_code, _headers, body):
 		$server/status.modulate = Color(1, 0, 0)
 		$server/status.text = body.get_string_from_utf8()
 		$device_credentials/send.disabled = true
+		$device_credentials/form/phone_number.editable = false
 		return
 	
 	$server/label.modulate = Color(0, 1, 0)
@@ -71,9 +72,11 @@ func _on_server_request_completed(_result, response_code, _headers, body):
 	$server/status.text = "200 OK"
 	$device_credentials/send.disabled = false
 	$device_credentials/already_logged_in.disabled = false
+	$device_credentials/form/phone_number.editable = true
 
 func _on_send_credentials_pressed():
-	$device_credentials/request.request(oxim_url + "/credentials?username=" + username + "&password=" + password, PackedStringArray(), HTTPClient.METHOD_POST)
+	var phone_number = $device_credentials/form/phone_number.text
+	$device_credentials/request.request(oxim_url + "/credentials?username=" + username + "&password=" + password + "&phone_number=" + phone_number, PackedStringArray(), HTTPClient.METHOD_POST)
 
 func _on_device_credentials_already_logged_in_pressed():
 	_on_device_credentials_request_completed(1, 200, 1, 1)
