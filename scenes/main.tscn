@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgotsvr67h3x7"]
 
-[ext_resource type="Script" path="res://scripts/create_account/create_account.gd" id="1_h6kov"]
+[ext_resource type="Script" path="res://scripts/main/main.gd" id="1_g5tus"]
 
 [node name="root" type="Node2D"]
 position = Vector2(360, 500)
-script = ExtResource("1_h6kov")
+script = ExtResource("1_g5tus")
 metadata/_edit_horizontal_guides_ = [-48.0]
 metadata/_edit_vertical_guides_ = [360.0, 527.0]
 
@@ -37,7 +37,7 @@ offset_top = 234.0
 offset_right = 331.0
 offset_bottom = 312.0
 pivot_offset = Vector2(166, 548)
-text = "Connect oxim
+text = "Connect polih
 device to
 internet"
 metadata/_edit_use_anchors_ = true
@@ -48,7 +48,7 @@ offset_top = 234.0
 offset_right = 524.0
 offset_bottom = 311.0
 pivot_offset = Vector2(-29, 548)
-text = "Oxim device
+text = "Polih device
 already
 connected?"
 metadata/_edit_use_anchors_ = true
@@ -80,7 +80,7 @@ position = Vector2(-360, -540)
 
 [node name="form" type="Node2D" parent="server"]
 
-[node name="username" type="LineEdit" parent="server/form"]
+[node name="device_name" type="LineEdit" parent="server/form"]
 offset_left = 245.0
 offset_top = 535.0
 offset_right = 476.0
@@ -88,7 +88,7 @@ offset_bottom = 576.0
 pivot_offset = Vector2(115, 247)
 size_flags_horizontal = 6
 size_flags_vertical = 4
-placeholder_text = "username"
+placeholder_text = "device name"
 editable = false
 metadata/_edit_use_anchors_ = true
 
@@ -104,7 +104,7 @@ placeholder_text = "password"
 editable = false
 metadata/_edit_use_anchors_ = true
 
-[node name="create_account" type="Button" parent="server"]
+[node name="register_device" type="Button" parent="server"]
 offset_left = 194.0
 offset_top = 676.0
 offset_right = 330.0
@@ -113,8 +113,8 @@ pivot_offset = Vector2(166, 106)
 size_flags_horizontal = 6
 size_flags_vertical = 4
 disabled = true
-text = "Create
-account"
+text = "Register new
+device"
 metadata/_edit_use_anchors_ = true
 
 [node name="log_in" type="Button" parent="server"]
@@ -158,47 +158,35 @@ position = Vector2(-360, -540)
 
 [node name="form" type="Node2D" parent="device_credentials"]
 
-[node name="phone_number" type="LineEdit" parent="device_credentials/form"]
-offset_left = 245.0
-offset_top = 985.0
-offset_right = 472.0
-offset_bottom = 1030.0
-pivot_offset = Vector2(115, 180)
-size_flags_horizontal = 6
-size_flags_vertical = 4
-placeholder_text = "phone number"
-editable = false
-metadata/_edit_use_anchors_ = true
-
 [node name="send" type="Button" parent="device_credentials"]
 offset_left = 194.0
-offset_top = 1067.0
-offset_right = 331.0
-offset_bottom = 1144.0
+offset_top = 1026.0
+offset_right = 342.0
+offset_bottom = 1103.0
 pivot_offset = Vector2(166, -257)
 disabled = true
-text = "Send username
+text = "Send device name
 and password to
-oxim device"
+polih device"
 metadata/_edit_use_anchors_ = true
 
 [node name="already_logged_in" type="Button" parent="device_credentials"]
 offset_left = 389.0
-offset_top = 1067.0
+offset_top = 1026.0
 offset_right = 523.0
-offset_bottom = 1144.0
+offset_bottom = 1103.0
 pivot_offset = Vector2(-29, -257)
 disabled = true
-text = "Oxim device
+text = "Polih device
 already logged
 in?"
 metadata/_edit_use_anchors_ = true
 
 [node name="label" type="LineEdit" parent="device_credentials"]
 offset_left = 193.0
-offset_top = 1202.0
+offset_top = 1178.0
 offset_right = 527.0
-offset_bottom = 1233.0
+offset_bottom = 1209.0
 pivot_offset = Vector2(167, -420)
 size_flags_horizontal = 3
 text = "device status"
@@ -208,9 +196,9 @@ metadata/_edit_use_anchors_ = true
 
 [node name="status" type="TextEdit" parent="device_credentials"]
 offset_left = 149.0
-offset_top = 1278.0
+offset_top = 1237.0
 offset_right = 570.0
-offset_bottom = 1378.0
+offset_bottom = 1337.0
 pivot_offset = Vector2(211, -496)
 size_flags_horizontal = 6
 size_flags_vertical = 4
@@ -231,7 +219,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="device_connection/send" to="." method="_on_device_connection_send_pressed"]
 [connection signal="pressed" from="device_connection/already_connected" to="." method="_on_device_connection_already_connected_pressed"]
 [connection signal="request_completed" from="device_connection/request" to="." method="_on_device_connection_request_completed"]
-[connection signal="pressed" from="server/create_account" to="." method="_on_server_create_account_pressed"]
+[connection signal="pressed" from="server/register_device" to="." method="_on_server_register_device_pressed"]
 [connection signal="pressed" from="server/log_in" to="." method="_on_server_log_in_pressed"]
 [connection signal="request_completed" from="server/request" to="." method="_on_server_request_completed"]
 [connection signal="pressed" from="device_credentials/send" to="." method="_on_send_credentials_pressed"]

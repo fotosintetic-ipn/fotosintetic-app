@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var server_url = ""
-@export var oxim_url = "http://192.168.4.1"
-var username: String
+@export var server_url = "http://127.0.0.1:18080"
+@export var polih_url = "http://192.168.4.1"
+var device_name: String
 var password: String
 
 func _ready():
@@ -18,7 +18,7 @@ func _on_device_connection_send_pressed():
 	if ssid == "" || wifi_password == "":
 		return
 	
-	$device_connection/request.request(oxim_url + "/connect?ssid=" + ssid + "&password=" + wifi_password, PackedStringArray(), HTTPClient.METHOD_POST)
+	$device_connection/request.request(polih_url + "/connect?ssid=" + ssid + "&password=" + wifi_password, PackedStringArray(), HTTPClient.METHOD_POST)
 
 func _on_device_connection_already_connected_pressed():
 	_on_device_connection_request_completed(1, 200, 1, 1)
@@ -28,35 +28,35 @@ func _on_device_connection_request_completed(_result, response_code, _headers, b
 		$device_connection/label.modulate = Color(1, 0, 0)
 		$device_connection/status.modulate = Color(1, 0, 0)
 		$device_connection/status.text = body.get_string_from_utf8()
-		$server/create_account.disabled = true
+		$server/register_device.disabled = true
 		return
 	
 	$device_connection/label.modulate = Color(0, 1, 0)
 	$device_connection/status.modulate = Color(0, 1, 0)
 	$device_connection/status.text = "200 OK"
 	
-	$server/create_account.disabled = false
+	$server/register_device.disabled = false
 	$server/log_in.disabled = false
 	$server/form/password.editable = true
-	$server/form/username.editable = true
+	$server/form/device_name.editable = true
 
-func _on_server_create_account_pressed():
-	username = $server/form/username.text
+func _on_server_register_device_pressed():
+	device_name = $server/form/device_name.text
 	password = $server/form/password.text
 	
-	if username == "" || password == "":
+	if device_name == "" || password == "":
 		return
 	
-	$server/request.request(server_url + "/create_account?username=" + username + "&password=" + password, PackedStringArray(), HTTPClient.METHOD_POST)
+	$server/request.request(server_url + "/register_device?device_name=" + device_name + "&password=" + password, PackedStringArray(), HTTPClient.METHOD_POST)
 
 func _on_server_log_in_pressed():
-	username = $server/form/username.text
+	device_name = $server/form/device_name.text
 	password = $server/form/password.text
 	
-	if username == "" || password == "":
+	if device_name == "" || password == "":
 		return
 	
-	$server/request.request(server_url + "/validate_credentials?username=" + username + "&password=" + password, PackedStringArray(), HTTPClient.METHOD_GET)
+	$server/request.request(server_url + "/validate_credentials?device_name=" + device_name + "&password=" + password, PackedStringArray(), HTTPClient.METHOD_GET)
 
 func _on_server_request_completed(_result, response_code, _headers, body):
 	if response_code != 200:
@@ -72,11 +72,9 @@ func _on_server_request_completed(_result, response_code, _headers, body):
 	$server/status.text = "200 OK"
 	$device_credentials/send.disabled = false
 	$device_credentials/already_logged_in.disabled = false
-	$device_credentials/form/phone_number.editable = true
 
 func _on_send_credentials_pressed():
-	var phone_number = $device_credentials/form/phone_number.text
-	$device_credentials/request.request(oxim_url + "/credentials?username=" + username + "&password=" + password + "&phone_number=" + phone_number, PackedStringArray(), HTTPClient.METHOD_POST)
+	$device_credentials/request.request(polih_url + "/credentials?device_name=" + device_name + "&password=" + password, PackedStringArray(), HTTPClient.METHOD_POST)
 
 func _on_device_credentials_already_logged_in_pressed():
 	_on_device_credentials_request_completed(1, 200, 1, 1)
@@ -97,7 +95,7 @@ func _on_next_pressed():
 	DirAccess.remove_absolute("user://data.dat")
 	
 	var file = FileAccess.open("user://data.dat", FileAccess.WRITE)
-	file.store_string(username + "\n")
+	file.store_string(device_name + "\n")
 	file.store_string(password)
 	file.close()
 	
