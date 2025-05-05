@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var server_url = "http://127.0.0.1:18080"
-@export var fotosintetic_url = "http://192.168.4.1"
+@export var server_url: String = "http://127.0.0.1:18080"
+@export var fotosintetic_url: String = "http://192.168.4.1"
 var device_name: String
 var password: String
 
