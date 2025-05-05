@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var chart: Chart = $Chart
+
+var to_plot: Array
 var ph: Function
 
 var device_name
@@ -47,6 +49,7 @@ func _ready():
 															# Line Charts and Area Charts.
 		}
 	)
+	
 	
 	chart.plot([ph], cp)
 

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var server_url = "http://127.0.0.1:18080"
-@export var polih_url = "http://192.168.4.1"
+@export var fotosintetic_url = "http://192.168.4.1"
 var device_name: String
 var password: String
 
@@ -18,7 +18,7 @@ func _on_device_connection_send_pressed():
 	if ssid == "" || wifi_password == "":
 		return
 	
-	$device_connection/request.request(polih_url + "/connect?ssid=" + ssid + "&password=" + wifi_password, PackedStringArray(), HTTPClient.METHOD_POST)
+	$device_connection/request.request(fotosintetic_url + "/connect?ssid=" + ssid + "&password=" + wifi_password, PackedStringArray(), HTTPClient.METHOD_POST)
 
 func _on_device_connection_already_connected_pressed():
 	_on_device_connection_request_completed(1, 200, 1, 1)
@@ -74,7 +74,7 @@ func _on_server_request_completed(_result, response_code, _headers, body):
 	$device_credentials/already_logged_in.disabled = false
 
 func _on_send_credentials_pressed():
-	$device_credentials/request.request(polih_url + "/credentials?device_name=" + device_name + "&password=" + password, PackedStringArray(), HTTPClient.METHOD_POST)
+	$device_credentials/request.request(fotosintetic_url + "/credentials?device_name=" + device_name + "&password=" + password, PackedStringArray(), HTTPClient.METHOD_POST)
 
 func _on_device_credentials_already_logged_in_pressed():
 	_on_device_credentials_request_completed(1, 200, 1, 1)

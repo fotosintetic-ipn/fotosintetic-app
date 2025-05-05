@@ -37,7 +37,7 @@ offset_top = 234.0
 offset_right = 331.0
 offset_bottom = 312.0
 pivot_offset = Vector2(166, 548)
-text = "Connect polih
+text = "Connect fotosintetic
 device to
 internet"
 metadata/_edit_use_anchors_ = true
@@ -48,7 +48,7 @@ offset_top = 234.0
 offset_right = 524.0
 offset_bottom = 311.0
 pivot_offset = Vector2(-29, 548)
-text = "Polih device
+text = "fotosintetic device
 already
 connected?"
 metadata/_edit_use_anchors_ = true
@@ -167,7 +167,7 @@ pivot_offset = Vector2(166, -257)
 disabled = true
 text = "Send device name
 and password to
-polih device"
+fotosintetic device"
 metadata/_edit_use_anchors_ = true
 
 [node name="already_logged_in" type="Button" parent="device_credentials"]
@@ -177,7 +177,7 @@ offset_right = 523.0
 offset_bottom = 1103.0
 pivot_offset = Vector2(-29, -257)
 disabled = true
-text = "Polih device
+text = "fotosintetic device
 already logged
 in?"
 metadata/_edit_use_anchors_ = true
