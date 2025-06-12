@@ -5,8 +5,6 @@
 [node name="root" type="Node2D"]
 position = Vector2(360, 500)
 script = ExtResource("1_g5tus")
-server_url = null
-fotosintetic_url = null
 metadata/_edit_horizontal_guides_ = [-48.0]
 metadata/_edit_vertical_guides_ = [360.0, 527.0]
 

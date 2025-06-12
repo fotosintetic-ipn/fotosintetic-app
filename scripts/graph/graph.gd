@@ -15,7 +15,7 @@ var wind_func: Function
 
 var device_name
 var password
-@export var server_url = "http://127.0.0.1:18080"
+@export var server_url = "http://enhanced-muskrat-uncommon.ngrok-free.app"
 var timer = 0
 
 var response: Dictionary

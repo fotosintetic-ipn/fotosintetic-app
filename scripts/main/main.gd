@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var server_url: String = "http://127.0.0.1:18080"
+@export var server_url: String = "http://enhanced-muskrat-uncommon.ngrok-free.app"
 @export var fotosintetic_url: String = "http://192.168.4.1"
 var device_name: String
 var password: String
@@ -64,7 +64,6 @@ func _on_server_request_completed(_result, response_code, _headers, body):
 		$server/status.modulate = Color(1, 0, 0)
 		$server/status.text = body.get_string_from_utf8()
 		$device_credentials/send.disabled = true
-		$device_credentials/form/phone_number.editable = false
 		return
 	
 	$server/label.modulate = Color(0, 1, 0)
